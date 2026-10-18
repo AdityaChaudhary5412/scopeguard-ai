@@ -1,0 +1,5 @@
+# ScopeGuard AI Dependencies
+# Core engine runs out-of-the-box on standard Python 3.8+ library with zero pip installs!
+# Optional performance and serving enhancements:
+requests>=2.31.0
+urllib3>=2.0.0

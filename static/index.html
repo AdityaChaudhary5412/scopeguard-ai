@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScopeGuard AI — Local-First Freelance Proposal & SOW Risk Auditor</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-area">
+        <div class="logo-icon">🛡️</div>
+        <div>
+          <h1 class="logo-title">ScopeGuard <span class="accent-badge">AI</span></h1>
+          <p class="logo-sub">Local-First Proposal Risk Auditor & SOW Generator</p>
+        </div>
+      </div>
+      <div class="header-badges">
+        <span class="badge badge-gemma">⚡ Powered by Gemma</span>
+        <span class="badge badge-privacy" id="statusBadge">🔒 100% On-Device Privacy</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-layout">
+    <!-- Left Column: Input Form -->
+    <section class="panel editor-panel">
+      <div class="panel-header">
+        <h2>Proposal & RFP Input</h2>
+        <div class="panel-actions">
+          <button type="button" class="btn btn-secondary btn-sm" id="btnLoadSample">Load Sample Ambiguous RFP</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btnClear">Clear</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="proposalInput">Paste Client Email, RFP, or Upwork Job Description:</label>
+        <textarea id="proposalInput" rows="13" placeholder="Paste the client's project brief or conversation notes here... e.g., 'Looking for a fast, modern app with clean code, unlimited revisions until satisfied, payment upon completion...'"></textarea>
+      </div>
+
+      <div class="quote-params-grid">
+        <div class="param-box">
+          <label for="baseHours">Base Estimated Hours:</label>
+          <input type="number" id="baseHours" value="40" min="1" max="1000">
+        </div>
+        <div class="param-box">
+          <label for="hourlyRate">Your Hourly Rate ($/hr):</label>
+          <input type="number" id="hourlyRate" value="95" min="1" max="1000">
+        </div>
+        <div class="param-box">
+          <label for="gemmaModel">Gemma Model:</label>
+          <select id="gemmaModel">
+            <option value="gemma2:2b">Gemma 2 (2B) — Ultra-Fast Local</option>
+            <option value="gemma2:9b">Gemma 2 (9B) — Deep Legal Reasoning</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-primary" id="btnAudit">
+          <span>🔍 Audit Proposal Risks</span>
+        </button>
+        <button class="btn btn-success" id="btnGenerate">
+          <span>⚡ Generate Hardened SOW</span>
+        </button>
+      </div>
+
+      <!-- Value Proposition Box -->
+      <div class="side-hustle-callout">
+        <div class="callout-title">💡 Why Freelancers & Solo Agencies Pay For ScopeGuard:</div>
+        <p>A single unpaid revision loop or ambiguous "etc." deliverable costs independent contractors $1,500 - $4,000 in lost billable hours. ScopeGuard transforms raw client emails into air-tight Statements of Work with automated risk-adjusted contingency buffers.</p>
+      </div>
+    </section>
+
+    <!-- Right Column: Results & Analysis -->
+    <section class="panel results-panel">
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">📊</div>
+        <h3>No Proposal Audited Yet</h3>
+        <p>Paste a client proposal on the left or click "Load Sample Ambiguous RFP" to see ScopeGuard analyze hidden scope traps and build an airtight agreement.</p>
+      </div>
+
+      <!-- Live Results Container -->
+      <div class="results-content hidden" id="resultsContent">
+        <!-- Top Metric Bar -->
+        <div class="metrics-row">
+          <div class="metric-card score-card">
+            <div class="metric-label">Risk Rating</div>
+            <div class="score-display">
+              <span class="score-number" id="riskScore">--</span>
+              <span class="score-max">/100</span>
+            </div>
+            <div class="tier-badge" id="riskTier">Evaluating...</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-label">Recommended Contingency Buffer</div>
+            <div class="metric-highlight" id="bufferPct">+20%</div>
+            <div class="metric-sub" id="bufferValue">+$760.00 to quote</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-label">Recommended Fixed Bid</div>
+            <div class="metric-highlight" id="fixedBid">$4,560.00</div>
+            <div class="metric-sub" id="depositSplit">Deposit: $1,824.00 (40%)</div>
+          </div>
+        </div>
+
+        <!-- Risk Clauses Breakdown -->
+        <div class="card-section">
+          <div class="section-title-row">
+            <h3>⚠️ Detected Scope Traps (<span id="clauseCount">0</span>)</h3>
+            <span class="pill pill-alert" id="criticalPill">0 Critical</span>
+          </div>
+          <div class="clauses-list" id="clausesList">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+
+        <!-- SOW Document Section -->
+        <div class="card-section">
+          <div class="section-title-row">
+            <h3>📄 Hardened Statement of Work (SOW)</h3>
+            <div class="sow-actions">
+              <span class="engine-tag" id="engineTag">Deterministic Engine</span>
+              <button class="btn btn-secondary btn-sm" id="btnCopySOW">📋 Copy SOW</button>
+            </div>
+          </div>
+          <div class="sow-preview" id="sowPreview">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Built for the <strong>Hacktoberfest Open-Source AI Challenge: Week 2 (Side Hustle)</strong> &bull; MIT License &bull; Zero External Telemetry</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

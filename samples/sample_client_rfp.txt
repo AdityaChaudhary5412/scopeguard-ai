@@ -1,0 +1,18 @@
+Project RFP: On-Demand Mobile Mechanics Marketplace (Client Brief)
+
+Overview:
+We are looking for an agile full-stack engineer to build an on-demand booking application for mobile auto mechanics.
+The app needs to be blazing fast, modern, and extremely user-friendly.
+
+Scope of Work:
+1. Interactive customer booking portal and mechanic dispatch dashboard.
+2. Integration with various other APIs, SMS gateways, and payment processors.
+3. Mobile-friendly responsive layouts, progressive web app features, etc.
+4. Real-time GPS mechanic tracking and status notifications.
+
+Project Terms & Expectations:
+- We expect contractor to be available as needed throughout the launch cycle.
+- Unlimited revisions until fully satisfied by our product advisory team.
+- Payment upon completion of the entire application on net-60 terms.
+- Developer must provide 180 days of free maintenance and bug-fixing after release.
+- Developer agrees to full indemnification and unlimited liability against any software failures or downtime.
